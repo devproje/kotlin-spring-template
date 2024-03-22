@@ -22,14 +22,19 @@ repositories {
 dependencies {
 	implementation(kotlin("stdlib"))
 	implementation(kotlin("reflect"))
-	implementation("org.mariadb.jdbc:mariadb-java-client:3.3.3")
-//	implementation("org.apache.tomcat:tomcat-jsp-api:11.0.0-M17") // Apache Tomcat API
+
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
-	implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
-	implementation("org.jetbrains.exposed:exposed-spring-boot-starter:$exposed_version")
+	implementation("org.springframework.boot:spring-boot-starter-tomcat")
+	implementation("org.apache.tomcat.embed:tomcat-embed-jasper:10.1.18")
+	implementation("jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0")
+
+	// If you want to use database, uncomment below
+//	implementation("org.mariadb.jdbc:mariadb-java-client:3.3.3")
+//	implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
+//	implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
+//	implementation("org.jetbrains.exposed:exposed-spring-boot-starter:$exposed_version")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

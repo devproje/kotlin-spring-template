@@ -1,28 +1,14 @@
 package net.projecttl.template
 
-import net.projecttl.template.model.Sample
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.runApplication
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
-@SpringBootApplication
-@RestController
-class TemplateApplication {
-	@GetMapping("/")
-	fun index(): Sample {
-		return Sample()
-	}
-
-	@GetMapping("/hello")
-	fun hello(): String {
-		return "World!"
-	}
-
-	@GetMapping("/test/{msg}")
-	fun message(@PathVariable msg: String): String {
-		return "Your message is: $msg"
+@SpringBootApplication(scanBasePackages = ["net.projecttl.template"])
+class TemplateApplication : SpringBootServletInitializer() {
+	override fun configure(builder: SpringApplicationBuilder): SpringApplicationBuilder {
+		return builder.sources(this::class.java)
 	}
 }
 
